@@ -17,7 +17,12 @@ namespace BSTInOrder
             root = Insert(root, 2);
             root = Insert(root, 4);
 
+            Console.WriteLine("In Order:");
             PrintInOrder(root);
+            Console.WriteLine("Pre Order:");
+            PrintPreOrder(root);
+            Console.WriteLine("Post Order:");
+            PrintPostOrder(root);
         }
         static Node Insert(Node root, int data)
         {
@@ -47,6 +52,28 @@ namespace BSTInOrder
             PrintInOrder(root.Left);
             Console.WriteLine(root.Data);
             PrintInOrder(root.Right);
+        }
+        static void PrintPostOrder(Node root)
+        {
+            if (root == null)
+            {
+                return;
+            }
+
+            PrintPostOrder(root.Left);
+            PrintPostOrder(root.Right);
+            Console.WriteLine(root.Data);
+        }
+        static void PrintPreOrder(Node root)
+        {
+            if (root == null)
+            {
+                return;
+            }
+
+            Console.WriteLine(root.Data);
+            PrintPreOrder(root.Left);
+            PrintPreOrder(root.Right);
         }
     }
 }
